@@ -36,10 +36,10 @@ def video(file: UploadFile = File(), x: str = Form(), y: str = Form(), w: str = 
     args = argparse.Namespace()
     args.data = file
     args.resume = 'cp/SiamMask_DAVIS.pth'
-    args.x = int(int(x)*1080/660)
-    args.y = int(int(y)*1920/1180)
-    args.w = int(int(w)*1080/660)
-    args.h = int(int(h)*1920/1180)
+    args.x = int(int(x)*256/330)
+    args.y = int(int(y)*256/590)
+    args.w = int(int(w)*256/330)
+    args.h = int(int(h)*256/590)
     args.mask_dilation = 32
     args.name = "vid"
     print("args created")

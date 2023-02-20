@@ -23,7 +23,7 @@ def createVideoClip(clip, folder, name, size=[512,512]):
         command = [ 'ffmpeg',
         '-y',  # overwrite output file if it exists
         '-f', 'rawvideo',
-        '-s', '512x512', #'512x512', # size of one frame
+        '-s', '256x256', #'512x512', # size of one frame
         '-pix_fmt', 'rgb24',
         '-r', '15', # frames per second
         '-an',  # Tells FFMPEG not to expect any audio
@@ -53,7 +53,7 @@ def to_var(x, volatile=False):
 def inpaint(args):
     print("inpainting now", flush=True)
     opt = Object()
-    opt.crop_size = 512
+    opt.crop_size = 256
     opt.double_size = True if opt.crop_size == 512 else False
     # DAVIS dataloader
     DAVIS_ROOT = './results'
@@ -62,7 +62,7 @@ def inpaint(args):
     DTloader = data.DataLoader(DTset, batch_size=1, shuffle=False, num_workers=1)
 
     opt.search_range = 4 # fixed as 4: search range for flow subnetworks
-    opt.pretrain_path = 'results/vinet_agg_rec/save_agg_rec_512.pth'
+    opt.pretrain_path = 'results/vinet_agg_rec/save_agg_rec.pth'
     opt.result_path = './results'
 
     opt.model = 'vinet_final'
@@ -93,8 +93,6 @@ def inpaint(args):
             print("ending of beginning of inference")
             print(inputs.size())
             print("masks: ", masks.size())
-            cv2.imwrite(os.path.join(
-                        "./results/newfinal",'%05d.png'%(0)), np.transpose((masks[0,:,0]).cpu().detach().numpy(), axes=[1, 2, 0]))
             idx = torch.LongTensor([i for i in range(pre_run-1, -1, -1)])
             pre_inputs = inputs[:,:,:pre_run].index_select(2, idx)
             pre_masks = masks[:,:,:pre_run].index_select(2, idx)
@@ -203,7 +201,7 @@ def inpaint(args):
                     out_frame = to_img(outputs)  
                     # if opt.save_image:            
                     cv2.imwrite(os.path.join(
-                        "./results/final",'%05d.png'%(t - pre_run)), np.transpose((masks[0,:,t]).cpu().detach().numpy(), axes=[1, 2, 0]))
+                        "./results/final",'%05d.png'%(t - pre_run)), out_frame)
                     cv2.imwrite(os.path.join(
                         "./results/prefinal",'%05d.png'%(t - pre_run)), np.transpose((masked_inputs[0,:,t]).cpu().detach().numpy(), axes=[1, 2, 0]))
                     out_frames.append(out_frame[:,:,::-1])

@@ -40,7 +40,7 @@ def get_frames(video_file):
     print("video file: ", video_file, flush=True)
     f = av.open(video_file.file)
     for frame in f.decode(video=0):
-        yield cv2.resize(cv2.cvtColor(np.array(frame.to_image()), cv2.COLOR_RGB2BGR), [960, 540])
+        yield cv2.resize(cv2.cvtColor(np.array(frame.to_image()), cv2.COLOR_RGB2BGR), [256,256])
 
 
 def mask(args):
@@ -87,7 +87,6 @@ def mask(args):
             print(f)
             target_pos = np.array([x + w / 2, y + h / 2])
             target_sz = np.array([w, h])
-            print("xywh: ", x, " ", y, " ", w, " ", h)
             print("shape:",im.shape)
             state = siamese_init(im, target_pos, target_sz, siammask, cfg['hp'])  # init tracker
         elif f > 0:  # tracking
@@ -96,7 +95,6 @@ def mask(args):
             location = state['ploygon'].flatten()
             mask = state['mask'] > state['p'].seg_thr
             mask = (mask * 255.).astype(np.uint8)
-            print("mask:",mask)
             cv2.imwrite('results/test_mask/{:05d}.png'.format(counter), mask)
             cv2.imwrite('results/test_frame/{:05d}.jpg'.format(counter), im)
             counter += 1

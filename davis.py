@@ -95,22 +95,23 @@ class DAVIS(data.Dataset):
             print("mask_file: ",mask_file)
             mask_ = np.array(Image.open(mask_file).convert('P'), np.uint8)
             mask_ = cv2.resize(mask_,self.size, cv2.INTER_NEAREST)
+            cv2.imwrite(os.path.join('./restults/PREPREfinal/{:04d}.png'.format(f)), mask_)
 
             # if video in DAVIS_2016:
-            #     mask_ = (mask_ != 0)
+            mask_ = (mask_ != 0)
             # else:
-            #     select_mask = min(1,mask_.max())
-            #     mask_ = (mask_==select_mask).astype(np.float)
+            # select_mask = min(1,mask_.max())
+            # mask_ = (mask_==select_mask).astype(np.float)
             
             w_k = np.ones((10,6))                
             mask2 = signal.convolve2d(mask_.astype(np.float), w_k, 'same')
-            # mask2 = 1 - (mask2 == 0)
-            mask_ = np.float32(mask_)
+            mask2 = 1 - (mask2==0)
+            mask_ = np.float32(mask2)
             cv2.imwrite(os.path.join("./results/PREPREfinal/{:05d}.png".format(f)), mask_)
             masks.append( torch.from_numpy(mask_) )
     
         masks = torch.stack(masks)
-        masks = masks.unsqueeze(0)
+        masks = (masks==1).type(torch.FloatTensor).unsqueeze(0)
         images = torch.stack(images).permute(3,0,1,2)
 
         return images, masks, info
