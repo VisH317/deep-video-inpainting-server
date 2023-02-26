@@ -18,4 +18,6 @@ DAVIS_demo/*
 DAVIS_demo/Annotations/*
 DAVIS_demo/JPEGImages/*
 results/old_results
-cp/SiamMask_DAVIS.pth
+cp/SiamMask_DAVIS.
+results
+DAVIS_demo
