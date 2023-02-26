@@ -11,12 +11,16 @@
   },
   "dependencies": {
     "@react-native-camera-roll/camera-roll": "^5.2.3",
+    "@react-navigation/native": "^6.1.5",
+    "@react-navigation/native-stack": "^6.9.11",
     "@shopify/react-native-skia": "^0.1.173",
     "react": "18.2.0",
     "react-native": "0.71.3",
     "react-native-fs": "^2.20.0",
     "react-native-gesture-handler": "^2.9.0",
     "react-native-image-picker": "^5.1.0",
+    "react-native-safe-area-context": "^4.5.0",
+    "react-native-screens": "^3.20.0",
     "react-native-uploader": "^0.0.10",
     "react-native-video": "^5.2.1",
     "rn-fetch-blob": "^0.12.0"

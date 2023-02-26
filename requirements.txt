@@ -3,3 +3,4 @@ av
 fastapi
 uvicorn
 cv2
+cudatoolkit=11.0
