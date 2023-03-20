@@ -12,8 +12,27 @@ import {
     View,
     Pressable
 } from 'react-native'
+import { useAtom } from 'jotai'
+import videoURI from '../data/video'
+
+async function getVideos() {
+    const params = {
+        mediaType: "video"
+    }
+    const videos = await launchImageLibrary(params)
+    return videos.assets
+}
+
 
 function Home({ navigation, routes }) {
+
+    const [uri, setUri] = useAtom(videoURI)
+
+    const updateVideos = async () => {
+        const video = await getVideos()
+        setUri({ value: video[0] })
+    }
+
     return (
         <View>
             <Text>Insert logo here</Text>
@@ -23,8 +42,8 @@ function Home({ navigation, routes }) {
             title="Get Videos"
             color="#841584"
             onPress={async () => {
-                    routes.params.updateVideos()
-                    navigation.navigate("Edit")
+                    await updateVideos()
+                    navigation.navigate("BoxSelect")
                 }}/>
         </View> 
     )

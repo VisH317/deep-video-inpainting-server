@@ -3,8 +3,18 @@ import RNFetchBlob from 'rn-fetch-blob'
 
 import VideoFirstFrame from './VideoFirstFrame'
 import styles from './boxSelectStyles'
+import { useAtom } from 'jotai'
+import videoURI from '../../data/video'
+import response from '../../data/videoResponse'
 
 function BoxSelect({ navigation, route }) {
+
+    const [uri, setUri] = atom(videoURI)
+    const [resp, setRes] = atom(response)
+
+    // set loading state
+    const [loading, setLoading] = useState(false)
+
     const [x, setx] = useState("")
     const [y, sety] = useState("")
     const [w, setw] = useState("")
@@ -12,7 +22,7 @@ function BoxSelect({ navigation, route }) {
 
     function onSubmit(event) {
         const formdata = new FormData()
-        formdata.append('file', {uri: route.params.uri, type: "video/mp4", name: "file.mp4"})
+        formdata.append('file', {uri, type: "video/mp4", name: "file.mp4"})
         formdata.append('x', x)
         formdata.append('y', y)
         formdata.append('w', w)
@@ -22,14 +32,14 @@ function BoxSelect({ navigation, route }) {
                 "content-type": "multipart/form-data"
             },
             [
-                {name: 'file', data: RNFetchBlob.wrap(route.params.uri), filename: 'vid.mp4'},
+                {name: 'file', data: RNFetchBlob.wrap(uri), filename: 'vid.mp4'},
                 {name: 'x', data: x},
                 {name: 'y', data: y},
                 {name: 'w', data: w},
                 {name: 'h', data: h},
             ]
         ).then(res => {
-            route.params.setRes(res)
+            setRes(res)
             RNFetchBlob.config({
                 fileCache: true,
                 addAndroidDownloads: {
@@ -39,8 +49,11 @@ function BoxSelect({ navigation, route }) {
                     path: `${RNFetchBlob.fs.dirs.DownloadDir}/video/vid.mp4`,
                     notification: true
                 }
-            }).fetch("GET", "http://10.0.2.2:8000/video").then(res => console.log("downloaded to: ", res.path()))
-        }).then(res => route.params.setRes(res))
+            }).fetch("GET", "http://10.0.2.2:8000/video").then(res => {
+                console.log("downloaded to: ", res.path())
+                navigation.navigate("Completed")
+        })
+        })
     }
 
     function set(x, y, w, h) {
@@ -51,9 +64,13 @@ function BoxSelect({ navigation, route }) {
         console.log(x, " ", y, " ", w, " ", h)
     }
 
-    return (
+    return loading ? (
         <View style={styles.chooseImage}>
-            <VideoFirstFrame uri={route.params.uri} setValues={set}/>
+            <Text>LOADING</Text>
+        </View>
+    ) : (
+        <View style={styles.chooseImage}>
+            <VideoFirstFrame uri={uri} setValues={set}/>
             {/* <Text>Select an Area to Remove:</Text>
             <TextInput onChangeText={setx} value={x} placeholder="x:"/>
             <TextInput onChangeText={sety} value={y} placeholder="y:"/>
