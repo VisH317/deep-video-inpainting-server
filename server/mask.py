@@ -40,7 +40,7 @@ def get_frames(video_file):
     print("video file: ", video_file, flush=True)
     f = av.open(video_file) # CHANGE: from video_file to video_file.file or unwrap the file object from FastAPI
     for frame in f.decode(video=0):
-        yield cv2.resize(cv2.cvtColor(np.array(frame.to_image()), cv2.COLOR_RGB2BGR), [256,256])
+        yield cv2.resize(cv2.cvtColor(np.array(frame.to_image()), cv2.COLOR_RGB2BGR), [512,512])
 
 
 def mask(args):

@@ -145,7 +145,13 @@ def generate_images(
 
             if mpath is not None:
                 mask = cv2.imread(mask_list[i], cv2.IMREAD_GRAYSCALE).astype(np.float32) / 255.0
+                cv2.imwrite(f"../results/prefinal/{i}.png", mask*255)
                 mask = cv2.resize(mask, (512, 512), interpolation=cv2.INTER_AREA)
+                mask[mask==1] = 2
+                mask[mask==0] = 1
+                mask[mask==2] = 0
+                # mask = add_padding(mask)
+                cv2.imwrite(f"../results/newfinal/{i}.png", mask*255)
                 mask = torch.from_numpy(mask).float().to(device).unsqueeze(0).unsqueeze(0)
             else:
                 mask = RandomMask(resolution) # adjust the masking ratio by using 'hole_range'
@@ -158,7 +164,29 @@ def generate_images(
             PIL.Image.fromarray(output, 'RGB').save(f'{outdir}/{iname}')
 
 
+def add_padding(mask):
+    points = []
+    for ((x,y),_)   in np.ndenumerate(mask):
+        if check_points(mask, x, y): points.append((x, y))
+    for (x, y) in points: mask[x][y]==0
+    return mask
+
+cache = {}
+
+def check_point(mask, x, y):
+    if (x,y) in cache.keys(): return cache[(x,y)]
+    t = x>=0 and y>=0 and x<mask.shape[0] and y<mask.shape[1] and mask[x][y]==0
+    cache[(x,y)] = t
+    return t
+
+def check_points(mask, x, y):
+    t = False
+    for i in range(x-3, x+4):
+        for j in range(y-3, y+4):
+            t = t or check_point(mask, i, j)
+    return t
+
 if __name__ == "__main__":
-    generate_images(None, network_pkl="../inputs/CelebA-HQ_256.pkl", mpath="../DAVIS_demo/test_mask", dpath="../DAVIS_demo/test_frame", resolution=256, truncation_psi=1, noise_mode="none", outdir="../results/final") # pylint: disable=no-value-for-parameter
+    generate_images(None, network_pkl="../inputs/Places_512.pkl", mpath="./test_sets/Places/masks", dpath="./test_sets/Places/images", resolution=512, truncation_psi=1, noise_mode="random", outdir="../results/final") # pylint: disable=no-value-for-parameter
 
 #----------------------------------------------------------------------------

@@ -51,3 +51,16 @@ def video(file: UploadFile = File(), x: str = Form(), y: str = Form(), w: str = 
     return FileResponse('./results/test.mp4')
     # write into a file or find a way to send the direct stream data
     # setup the arguments and run mask and paint, get the returned file and send raw
+
+# >>> import mask
+# >>> import argparse
+# >>> args = argparse.Namespace()
+# >>> args.data = open("../DAVIS_demo/pexels-cottonbro-studio-3756071-4096x2160-50fps.mp4")
+# >>> args.resume = "cp/SiamMask_DAVIS.pth"
+# >>> args.x=384
+# >>> args.y=230
+# >>> args.w=100
+# >>> args.h=40
+# >>> args.mask_dilation=34
+# >>> args.name="vid"
+# >>> 
