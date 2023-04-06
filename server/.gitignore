@@ -21,3 +21,5 @@ results/old_results
 cp/SiamMask_DAVIS.
 results
 DAVIS_demo
+E2FGVI/examples
+E2FGVI/release_model

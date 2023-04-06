@@ -81,6 +81,7 @@ def mask(args):
 
     print("starting the inference")
     totalf = 0
+    masks = []
     for f, im in enumerate(ims):
         tic = cv2.getTickCount()
         if f == 0:  # init
@@ -95,6 +96,7 @@ def mask(args):
             location = state['ploygon'].flatten()
             mask = state['mask'] > state['p'].seg_thr
             mask = (mask * 255.).astype(np.uint8)
+            masks.append(mask)
             cv2.imwrite('results/test_mask/{:05d}.png'.format(counter), mask)
             cv2.imwrite('results/test_frame/{:05d}.jpg'.format(counter), im)
             counter += 1
@@ -114,4 +116,4 @@ def mask(args):
     print(toc)
     fps = totalf / toc
     print('SiamMask Time: {:02.1f}s Speed: {:3.1f}fps (with visulization!)'.format(toc, fps))
-
+    return ims, masks
