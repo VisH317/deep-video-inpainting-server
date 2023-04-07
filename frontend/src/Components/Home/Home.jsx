@@ -13,8 +13,8 @@ import {
     Pressable
 } from 'react-native'
 import { useAtom } from 'jotai'
-import videoURI from '../data/video'
-import Nav from './Nav'
+import videoURI from '../../data/video'
+import Nav from '../Nav'
 import ImgStack from './ImgStack'
 import Action from './Action'
 
