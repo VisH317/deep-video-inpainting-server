@@ -31,5 +31,5 @@ class Predictor(BasePredictor):
         ims, masks = mask.mask(video)
         args.frames = ims
         args.masks = masks
-        test.main_worker(args)
-        
+        file = test.main_worker(args)
+        return File(file)
