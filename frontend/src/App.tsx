@@ -9,7 +9,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 // Components
 import Completed from './Components/Completed'
-import Home from './Components/Home'
+import Home from './Components/Home/Home'
 import Loading from './Components/Loading'
 import BoxSelect from './Components/BoxSelect/BoxSelect'
 
@@ -43,9 +43,9 @@ function App() {
 
     return (
         <GestureHandlerRootView style={{flex:1}} ref={navigationRef}>
+            <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} backgroundColor={backgroundStyle.backgroundColor}/>
             <NavigationContainer>
                 <Stack.Navigator>
-                    <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} backgroundColor={backgroundStyle.backgroundColor}/>
                     <Stack.Screen name="Home" options={{ title: "Home", updateVideos }} component={Home}/>
                     <Stack.Screen name="Loading" component={Loading}/>
                     <Stack.Screen name="Completed" component={Completed}/>
