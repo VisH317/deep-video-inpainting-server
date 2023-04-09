@@ -17,12 +17,12 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight'
 
 interface ActionProps {
     title: string,
-    desc: string
+    desc: string,
 }
 
 export default function Action(props: ActionProps) {
     return (
-        <View style={styles.container}>
+        <Pressable style={styles.container}>
             <View style={styles.text}>
                 <Text>{props.title}</Text>
                 <Text>{props.desc}</Text>
@@ -30,7 +30,7 @@ export default function Action(props: ActionProps) {
             <View style={styles.go}>
                 <FontAwesomeIcon icon={faArrowRight} color="white"/>
             </View>
-        </View>
+        </Pressable>
     )
 }
 

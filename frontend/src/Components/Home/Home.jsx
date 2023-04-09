@@ -27,7 +27,7 @@ async function getVideos() {
 }
 
 
-export default function Home({ navigation, routes }) {
+export default function Home({ navigation }) {
 
     const [uri, setUri] = useAtom(videoURI)
 
@@ -49,8 +49,8 @@ export default function Home({ navigation, routes }) {
                 Remove Objects from Videos Using AI
             </View>
             <View style={styles.actionContainer}>
-                <Action text="Upload a Video" desc="Edit a premade video"/>
-                <Action text="Record a Video" desc="Record a video to edit"/>
+                <Action text="Upload a Video" desc="Edit a premade video" onClick=""/>
+                <Action text="Record a Video" desc="Record a video to edit" onClick="Record"/>
             </View>
         </View>
     )

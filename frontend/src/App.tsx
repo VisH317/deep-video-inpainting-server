@@ -1,33 +1,29 @@
 import React, { useState } from 'react'
 import { Button, StatusBar, Text, useColorScheme, View } from 'react-native'
 import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { launchImageLibrary } from 'react-native-image-picker'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
-
 
 // Components
 import Completed from './Components/Completed'
 import Home from './Components/Home/Home'
 import Loading from './Components/Loading'
-import BoxSelect from './Components/BoxSelect/BoxSelect'
+import BoxSelect from './Components/Record/BoxSelect/BoxSelect'
+import RecordStack from './Components/Record/RecordStack';
+
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faCamera } from '@fortawesome/free-solid-svg-icons/faCamera'
+import { faFolder } from "@fortawesome/free-solid-svg-icons/faFolder"
+import { faHome } from "@fortawesome/free-solid-svg-icons/faHome"
 
 
-const Stack = createNativeStackNavigator()
+const Tab = createBottomTabNavigator()
 const navigationRef = createNavigationContainerRef()
 
-async function getVideos() {
-    const params = {
-        mediaType: "video"
-    }
-    const videos = await launchImageLibrary(params)
-    return videos.assets
-}
 
 function App() {
-    const [videos, setVideos] = useState(false)
-    const [objVideo, setObjVideo] = useState(false)
 
     const isDarkMode = useColorScheme() === 'dark';
 
@@ -35,22 +31,25 @@ function App() {
         backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     };
 
-    async function updateVideos() {
-        const videos = await getVideos();
-        console.log(videos)
-        setVideos(videos[0])
-    }
-
     return (
-        <GestureHandlerRootView style={{flex:1}} ref={navigationRef}>
+        <GestureHandlerRootView style={{flex:1}}>
             <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} backgroundColor={backgroundStyle.backgroundColor}/>
-            <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen name="Home" options={{ title: "Home", updateVideos }} component={Home}/>
-                    <Stack.Screen name="Loading" component={Loading}/>
-                    <Stack.Screen name="Completed" component={Completed}/>
-                    <Stack.Screen name="BoxSelect" component={BoxSelect} options={{ uri: videos.uri, setRes: () => setObjVideo(true) }}/>
-                </Stack.Navigator>
+            <NavigationContainer ref={navigationRef}>
+                <Tab.Navigator screenOptions={({ route }) => ({
+                    tabbarIcon: ({ focused, color, size }) => {
+                        let iconName;
+                        if(route.name==="Home") iconName = faHome
+                        if(route.name==="Camera") iconName = faCamera
+                        if(route.name==="Files") iconName = faFolder
+                        return <FontAwesomeIcon icon={iconName} color={color}/>
+                    },
+                    tabBarActiveTintColor: "#ff8c67",
+                    tabBarInactiveTintColor: "#979797"
+                })}>
+                    <Tab.Screen name="Home" options={{ title: "Home" }} component={Home}/>
+                    <Tab.Screen name="Camera" options={{ title: "Camera" }} component={RecordStack}/>
+                    <Tab.Screen name="Files" options={{ title: "Files" }} component={<View>hola.</View>}/>
+                </Tab.Navigator>
             </NavigationContainer>
         </GestureHandlerRootView>
     )

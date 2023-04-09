@@ -14,6 +14,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-native-fontawesome": "^0.3.0",
     "@react-native-camera-roll/camera-roll": "^5.2.3",
+    "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.5",
     "@react-navigation/native-stack": "^6.9.11",
     "@shopify/react-native-skia": "^0.1.173",
@@ -28,6 +29,7 @@
     "react-native-svg": "^13.9.0",
     "react-native-uploader": "^0.0.10",
     "react-native-video": "^5.2.1",
+    "react-native-vision-camera": "^2.15.4",
     "rn-fetch-blob": "^0.12.0"
   },
   "devDependencies": {
