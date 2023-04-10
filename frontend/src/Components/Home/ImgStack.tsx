@@ -19,7 +19,7 @@ export default function ImgStack() {
             <View style={styles.one}/>
             <View style={styles.two}/>
             <View style={styles.main}>
-                CONTENT
+                <Text>CONTENT</Text>
             </View>
         </View>
     )
@@ -28,24 +28,25 @@ export default function ImgStack() {
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        height: "300px",
+        height: 300,
         position: "relative"
     },
     one: {
         position: "absolute",
-        width: "297px",
-        height: "204px",
-        left: "calc(50% - 148.5px)",
-        top: "calc(50% - 102px)",
+        width: 297,
+        height: 204,
+        // left: "calc(50% - 148.5px)",
+        // top: "calc(50% - 102px)",
+        left: 148,
         backgroundColor: "#d9d9d9",
         borderRadius: 20
     },
     two: {
         position: "absolute",
-        width: "241px",
-        height: "249px",
-        left: "calc(50% - 120.5px)",
-        top: "calc(50% - 124.5px)",
+        width: 241,
+        height: 249,
+        // left: "calc(50% - 120.5px)",
+        // top: "calc(50% - 124.5px)",
         backgroundColor: "#b5b5b5",
         borderRadius: 20
     },
@@ -53,8 +54,8 @@ const styles = StyleSheet.create({
         position: "absolute",
         width: "185px",
         height: "293px",
-        left: "calc(50% - 92.5px)",
-        top: "calc(50% - 146.5px)",
+        // left: "calc(50% - 92.5px)",
+        // top: "calc(50% - 146.5px)",
         backgroundColor: "#eee",
         borderRadius: 20
     }

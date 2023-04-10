@@ -22,6 +22,9 @@ import { faHome } from "@fortawesome/free-solid-svg-icons/faHome"
 const Tab = createBottomTabNavigator()
 const navigationRef = createNavigationContainerRef()
 
+const Hola = () => (
+    <Text>HOLA</Text>
+)
 
 function App() {
 
@@ -46,9 +49,9 @@ function App() {
                     tabBarActiveTintColor: "#ff8c67",
                     tabBarInactiveTintColor: "#979797"
                 })}>
+                    <Tab.Screen name="Hola" component={Hola}/>
                     <Tab.Screen name="Home" options={{ title: "Home" }} component={Home}/>
-                    <Tab.Screen name="Camera" options={{ title: "Camera" }} component={RecordStack}/>
-                    <Tab.Screen name="Files" options={{ title: "Files" }} component={<View>hola.</View>}/>
+                    {/*<Tab.Screen name="Camera" options={{ title: "Camera" }} component={RecordStack}/> */}
                 </Tab.Navigator>
             </NavigationContainer>
         </GestureHandlerRootView>

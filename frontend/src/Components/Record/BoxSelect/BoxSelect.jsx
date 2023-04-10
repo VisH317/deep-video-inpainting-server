@@ -4,8 +4,8 @@ import RNFetchBlob from 'rn-fetch-blob'
 import VideoFirstFrame from './VideoFirstFrame'
 import styles from './boxSelectStyles'
 import { useAtom } from 'jotai'
-import videoURI from '../../data/video'
-import response from '../../data/videoResponse'
+import videoURI from '../../../data/video'
+import response from '../../../data/videoResponse'
 
 function BoxSelect({ navigation, route }) {
 

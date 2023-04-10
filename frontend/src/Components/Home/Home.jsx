@@ -38,7 +38,6 @@ export default function Home({ navigation }) {
 
     return (
         <View>
-            <Nav active={0}/>
             <View style={styles.topRect}/>
             <View style={styles.bottomRect}/>
             <ImgStack/>
@@ -74,10 +73,10 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
     topRect: {
         position: "absolute",
-        width: "876.42px",
-        height: "173px",
-        left: "840.42px",
-        top: "202px",
+        width: 876.42,
+        height: 173,
+        left: 840.42,
+        top: 202,
         background: "linear-gradient(98.37deg, #FFA89C 35.94%, #FF8C67 96.5%)",
     },
     bottomRect: {
