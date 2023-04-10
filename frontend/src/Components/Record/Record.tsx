@@ -18,9 +18,10 @@ async function getVideos() {
     return videos.assets
 }
 
-export default function Record({ navigation }) {
-    const devices = useCameraDevices('wide-angle-camera')
+export default function Record({ navigation }: any) {
+    const devices = useCameraDevices('telephoto-camera')
     const device = devices.back
+    console.log("devices: ", device)
 
     const [isRecording, setRec] = useState(false)
     const camera = useRef<Camera>(null)
@@ -28,6 +29,7 @@ export default function Record({ navigation }) {
 
     const updateVideos = async () => {
         const video = await getVideos()
+        if(video===undefined) return
         setUri(video[0].uri)
         navigation.navigate("Select")
     }
@@ -35,6 +37,7 @@ export default function Record({ navigation }) {
 
     const startRecording = async () => {
         if(!isRecording) {
+            if(camera.current===null) return
             await camera.current.startRecording({
                 flash: 'auto',
                 onRecordingFinished: vid => {
@@ -45,19 +48,20 @@ export default function Record({ navigation }) {
             })
             setRec(true)
         } else {
+            if(camera.current===null) return
             await camera.current.stopRecording()
             setRec(false)
         }
     }
 
-    if(device==null) return <View>LOADING</View>
+    if(device==null) return <Text>LOADING</Text>
     return (
         <View>
-            <Nav active={1}/>
-            <Camera style={styles.camera} device={device} video={true} ref={camera}/>
+            <Camera style={styles.camera} device={device} video={true} ref={camera} isActive/>
             <Pressable style={styles.start} onPressOut={startRecording}/>
             <Pressable style={styles.upload} onPressOut={updateVideos}>
-                <FontAwesomeIcon icon={faFileUpload} color="white"/>
+                <Text><FontAwesomeIcon icon={faFileUpload} color="white"/></Text>
+                <Text>COMO ESTAS TU</Text>
             </Pressable>
         </View>
     )
@@ -68,22 +72,22 @@ const styles = StyleSheet.create({
         height: "calc(100%-60px)",
         width: "100%",
         position: "absolute",
-        top: "0px",
-        left: "0px"
+        top: 0,
+        left: 0
     },
     start: {
-        width: "20px",
-        height: "20px",
+        width: 20,
+        height: 20,
         backgroundColor: "transparent",
         borderRadius: 10,
         border: "10px solid white",
         position: "absolute",
-        left: "calc(50%-10px)",
+        // left: "calc(50%-10px)",
         top: "85%"
     },
     upload: {
-        width: "20px",
-        height: "20px",
+        width: 20,
+        height: 20,
         backgroundColor: "transparent",
         color: "white",
         position: "absolute",

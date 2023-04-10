@@ -47,11 +47,11 @@ function App() {
                         return <FontAwesomeIcon icon={iconName} color={color}/>
                     },
                     tabBarActiveTintColor: "#ff8c67",
-                    tabBarInactiveTintColor: "#979797"
+                    tabBarInactiveTintColor: "#979797",
+                    headerShown: false
                 })}>
-                    <Tab.Screen name="Hola" component={Hola}/>
                     <Tab.Screen name="Home" options={{ title: "Home" }} component={Home}/>
-                    {/*<Tab.Screen name="Camera" options={{ title: "Camera" }} component={RecordStack}/> */}
+                    <Tab.Screen name="Camera" options={{ title: "Camera" }} component={RecordStack}/>
                 </Tab.Navigator>
             </NavigationContainer>
         </GestureHandlerRootView>

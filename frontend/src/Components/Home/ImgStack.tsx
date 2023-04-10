@@ -28,8 +28,12 @@ export default function ImgStack() {
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        height: 300,
-        position: "relative"
+        height: 340,
+        position: "relative",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center"
     },
     one: {
         position: "absolute",
@@ -38,8 +42,9 @@ const styles = StyleSheet.create({
         // left: "calc(50% - 148.5px)",
         // top: "calc(50% - 102px)",
         // left: 148,
-        backgroundColor: "#d9d9d9",
-        borderRadius: 20
+        backgroundColor: "#b5b5b5",
+        borderRadius: 20,
+        marginHorizontal: 50
     },
     two: {
         position: "absolute",
@@ -47,8 +52,9 @@ const styles = StyleSheet.create({
         height: 249,
         // left: "calc(50% - 120.5px)",
         // top: "calc(50% - 124.5px)",
-        backgroundColor: "#b5b5b5",
-        borderRadius: 20
+        backgroundColor: "#d9d9d9",
+        borderRadius: 20,
+        marginHorizontal: 50
     },
     main: {
         // position: "absolute",
@@ -57,6 +63,7 @@ const styles = StyleSheet.create({
         // left: "calc(50% - 92.5px)",
         // top: "calc(50% - 146.5px)",
         backgroundColor: "#eee",
-        borderRadius: 20
+        borderRadius: 20,
+        
     }
 })

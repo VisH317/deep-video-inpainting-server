@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator()
 
 export default function RecordStack() {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name="Record" component={Record}/>
             <Stack.Screen name="Select" component={BoxSelect}/>
             
