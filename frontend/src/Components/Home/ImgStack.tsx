@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         height: 204,
         // left: "calc(50% - 148.5px)",
         // top: "calc(50% - 102px)",
-        left: 148,
+        // left: 148,
         backgroundColor: "#d9d9d9",
         borderRadius: 20
     },
@@ -51,9 +51,9 @@ const styles = StyleSheet.create({
         borderRadius: 20
     },
     main: {
-        position: "absolute",
-        width: "185px",
-        height: "293px",
+        // position: "absolute",
+        width: 185,
+        height: 293,
         // left: "calc(50% - 92.5px)",
         // top: "calc(50% - 146.5px)",
         backgroundColor: "#eee",

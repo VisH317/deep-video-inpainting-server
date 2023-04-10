@@ -38,14 +38,14 @@ export default function Home({ navigation }) {
 
     return (
         <View>
-            <View style={styles.topRect}/>
-            <View style={styles.bottomRect}/>
+            {/* <View style={styles.topRect}/>
+            <View style={styles.bottomRect}/>*/}
             <ImgStack/>
             <View style={styles.mainText}>
                 <Text>Video <Text style={styles.highlight}>Inpainting</Text></Text>
             </View>
             <View style={styles.desc}>
-                Remove Objects from Videos Using AI
+                <Text>Remove Objects from Videos Using AI</Text>
             </View>
             <View style={styles.actionContainer}>
                 <Action text="Upload a Video" desc="Edit a premade video" onClick=""/>
