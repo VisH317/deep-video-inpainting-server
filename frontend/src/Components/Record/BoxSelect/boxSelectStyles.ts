@@ -2,18 +2,17 @@ import { StyleSheet } from "react-native"
 
 const styles = StyleSheet.create({
     backgroundVideo: {
-        position: "relative",
-        top: 20,
         zIndex: 0,
-        height: "100%",
+        height: 635,
+        flex: 1,
         width: "100%",
+        borderColor: "black",
+        borderWidth: 5
     },
     button: {
-        position: "absolute",
-        top: 0,
         zIndex: 3,
         backgroundColor: "#4CAF50",
-        width: 415,
+        width: "50%",
         textAlign: 'center',
         alignItems: "center",
         justifyContent: "center",
@@ -21,14 +20,23 @@ const styles = StyleSheet.create({
     },
     videoCont: {
         position: 'absolute',
-        top: 30,
-        height: 600,
+        height: 635,
         zIndex: 0,
-        width: "80%",
-        marginLeft: "10%",
-        justifyContent: 'center',
+        width: "100%",
         alignItems: 'center',
         borderColor: 'black',
+        flex: 1,
+        display: "flex",
+
+    },
+    btnContainer: {
+        flex: 1, 
+        flexDirection: "column-reverse", 
+        height: 635, 
+        width: "100%", 
+        position: "absolute", 
+        top: 0, 
+        left: 0
     },
     chooseImage: {
         flexDirection: 'column',

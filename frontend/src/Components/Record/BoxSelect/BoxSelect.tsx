@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View, Pressable, Text } from 'react-native'
 import RNFetchBlob from 'rn-fetch-blob'
 
 import VideoFirstFrame from './VideoFirstFrame'
@@ -7,20 +8,22 @@ import { useAtom } from 'jotai'
 import videoURI from '../../../data/video'
 import response from '../../../data/videoResponse'
 
-function BoxSelect({ navigation, route }) {
+function BoxSelect({ navigation, route }: any) {
 
-    const [uri, setUri] = atom(videoURI)
-    const [resp, setRes] = atom(response)
+    const [uri, setUri] = useAtom(videoURI)
+    const [resp, setRes] = useAtom(response)
+    console.log("uri: ", uri)
 
     // set loading state
     const [loading, setLoading] = useState(false)
 
-    const [x, setx] = useState("")
-    const [y, sety] = useState("")
-    const [w, setw] = useState("")
-    const [h, seth] = useState("")
+    const [x, setx] = useState<number>(0)
+    const [y, sety] = useState<number>(0)
+    const [w, setw] = useState<number>(0)
+    const [h, seth] = useState<number>(0)
 
-    function onSubmit(event) {
+    function onSubmit(event: React.FormEvent<HTMLInputElement>) {
+        event.preventDefault()
         const formdata = new FormData()
         formdata.append('file', {uri, type: "video/mp4", name: "file.mp4"})
         formdata.append('x', x)
@@ -56,7 +59,7 @@ function BoxSelect({ navigation, route }) {
         })
     }
 
-    function set(x, y, w, h) {
+    const set = (x: number, y: number, w: number, h: number) => {
         setx(x)
         sety(y)
         setw(w)
@@ -76,9 +79,11 @@ function BoxSelect({ navigation, route }) {
             <TextInput onChangeText={sety} value={y} placeholder="y:"/>
             <TextInput onChangeText={setw} value={w} placeholder="w:"/>
             <TextInput onChangeText={seth} value={h} placeholder="h:"/> */}
-            <Pressable onPress={onSubmit} style={styles.button}>
-                <Text style={styles.text}>Inpaint Video</Text>
-            </Pressable>
+            <View style={styles.btnContainer}>
+                <Pressable onPress={onSubmit} style={styles.button}>
+                    <Text style={styles.text}>Inpaint Video</Text>
+                </Pressable>
+            </View>
         </View>
 
     )
