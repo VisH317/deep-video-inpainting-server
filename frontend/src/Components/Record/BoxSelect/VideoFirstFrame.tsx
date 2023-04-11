@@ -14,14 +14,14 @@ export default function VideoFirstFrame(props: VideoFrameProps) {
     const [p, setp] = useState(false)
 
     // gestures
-    const [x, setx] = useState(0)
-    const [y, sety] = useState(0)
+    const [x, setx] = useState(-10)
+    const [y, sety] = useState(-10)
     const [w, setw] = useState(0)
     const [h, seth] = useState(0)
 
     // states for bounding box
-    const [absx, setabsx] = useState(0)
-    const [absy, setabsy] = useState(0)
+    const [absx, setabsx] = useState(-10)
+    const [absy, setabsy] = useState(-10)
     const [absxf, setabsxf] = useState(0)
     const [absyf, setabsyf] = useState(0)
 

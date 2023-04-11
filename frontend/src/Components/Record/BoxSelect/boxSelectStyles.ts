@@ -6,8 +6,6 @@ const styles = StyleSheet.create({
         height: 635,
         flex: 1,
         width: "100%",
-        borderColor: "black",
-        borderWidth: 5
     },
     button: {
         zIndex: 3,

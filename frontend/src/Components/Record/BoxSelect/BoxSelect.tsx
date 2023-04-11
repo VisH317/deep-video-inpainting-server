@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Pressable, Text } from 'react-native'
+import { View, Pressable, Text, TouchableNativeFeedback } from 'react-native'
 import RNFetchBlob from 'rn-fetch-blob'
 
 import VideoFirstFrame from './VideoFirstFrame'
@@ -7,6 +7,12 @@ import styles from './boxSelectStyles'
 import { useAtom } from 'jotai'
 import videoURI from '../../../data/video'
 import response from '../../../data/videoResponse'
+import LinearGradient from 'react-native-linear-gradient'
+
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
+import { faInfo } from '@fortawesome/free-solid-svg-icons/faInfo'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
 
 function BoxSelect({ navigation, route }: any) {
 
@@ -17,8 +23,8 @@ function BoxSelect({ navigation, route }: any) {
     // set loading state
     const [loading, setLoading] = useState(false)
 
-    const [x, setx] = useState<number>(0)
-    const [y, sety] = useState<number>(0)
+    const [x, setx] = useState<number>(-1)
+    const [y, sety] = useState<number>(-1)
     const [w, setw] = useState<number>(0)
     const [h, seth] = useState<number>(0)
 
@@ -81,15 +87,35 @@ function BoxSelect({ navigation, route }: any) {
             <TextInput onChangeText={seth} value={h} placeholder="h:"/> */}
             <View style={styles.btnContainer}>
                 <View style={styles.actions}>
-                    <Pressable onPress={onSubmit} style={styles.button}>
-                        <Text style={styles.text}>Inp</Text>
-                    </Pressable>
-                    <Pressable onPress={onSubmit} style={styles.button}>
-                        <Text style={styles.text}>Inp</Text>
-                    </Pressable>
-                    <Pressable onPress={onSubmit} style={styles.button}>
-                        <Text style={styles.text}>Inp</Text>
-                    </Pressable>
+                    <View style={{borderRadius: 32.5}}>
+                    <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(
+                        "#00000000",
+                        true
+                    )} onPress={() => console.log("hola")}>
+                        <View style={{width: 65, height: 65, overflow: "hidden", borderRadius: 32.5, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                            <FontAwesomeIcon icon={faArrowLeft} color="#333" size={35}/>
+                        </View>
+                    </TouchableNativeFeedback>
+                    </View>
+
+                    <View style={{borderRadius: 32.5}}>
+                    <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(
+                        "#00000000",
+                        true
+                    )} onPress={() => console.log("hola")}>
+                        <View style={{width: 65, height: 65, overflow: "hidden", borderRadius: 32.5, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                            <FontAwesomeIcon icon={faInfo} color="#333" size={35}/>
+                        </View>
+                    </TouchableNativeFeedback>
+                    </View>
+
+                    <LinearGradient colors={['#FF8C67', '#FFA89C']}
+                        style={styles.button} 
+                        start={{ y: 0.0, x: 0.0 }} end={{ y: 1.0, x: 1.0 }}>
+                        <Pressable onPress={onSubmit}>
+                            <FontAwesomeIcon icon={faCheck} color="#333" size={35}/>
+                        </Pressable>
+                    </LinearGradient>
                 </View>
             </View>
         </View>
