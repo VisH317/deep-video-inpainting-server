@@ -80,9 +80,17 @@ function BoxSelect({ navigation, route }: any) {
             <TextInput onChangeText={setw} value={w} placeholder="w:"/>
             <TextInput onChangeText={seth} value={h} placeholder="h:"/> */}
             <View style={styles.btnContainer}>
-                <Pressable onPress={onSubmit} style={styles.button}>
-                    <Text style={styles.text}>Inpaint Video</Text>
-                </Pressable>
+                <View style={styles.actions}>
+                    <Pressable onPress={onSubmit} style={styles.button}>
+                        <Text style={styles.text}>Inp</Text>
+                    </Pressable>
+                    <Pressable onPress={onSubmit} style={styles.button}>
+                        <Text style={styles.text}>Inp</Text>
+                    </Pressable>
+                    <Pressable onPress={onSubmit} style={styles.button}>
+                        <Text style={styles.text}>Inp</Text>
+                    </Pressable>
+                </View>
             </View>
         </View>
 

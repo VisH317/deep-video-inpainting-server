@@ -11,12 +11,22 @@ const styles = StyleSheet.create({
     },
     button: {
         zIndex: 3,
-        backgroundColor: "#4CAF50",
-        width: "50%",
+        backgroundColor: "#FF8C67",
+        width: 65,
         textAlign: 'center',
         alignItems: "center",
         justifyContent: "center",
-        height: 50,
+        height: 65,
+        borderRadius: 32.5
+    },
+    actions: {
+        zIndex: 3,
+        width: "100%",
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        height: 80,
+        flexDirection: "row"
     },
     videoCont: {
         position: 'absolute',
