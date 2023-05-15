@@ -40,7 +40,7 @@ export default function Action(props: ActionProps) {
                     <Text style={styles.desc}>{props.desc}</Text>
                 </View>
                 <View style={styles.go}>
-                    <FontAwesomeIcon icon={faArrowRight} color="white" size={36}/>
+                    <FontAwesomeIcon icon={faArrowRight} color="#3b82f6" size={36}/>
                 </View>
                 </View>
             </TouchableNativeFeedback>
@@ -91,12 +91,12 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 25,
-        color: "white",
-        fontWeight: "700"
+        color: "#334155",
+        fontWeight: "400"
     },
     desc: {
-        fontSize: 13,
-        color: "white",
+        fontSize: 16,
+        color: "#94a3b8",
         fontWeight: "300"
     }
 })

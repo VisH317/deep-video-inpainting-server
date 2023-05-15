@@ -10,7 +10,8 @@ import {
     TextInput,
     useColorScheme,
     View,
-    Pressable
+    Pressable,
+    Image
 } from 'react-native'
 import { useAtom } from 'jotai'
 import videoURI from '../../data/video'
@@ -46,15 +47,16 @@ export default function Home({ navigation }: any) {
                 start={{x: 0, y: 0}}
                 end={{x: 1, y: 1}}/> */}
             <LinearGradient style={styles.bottomRect} 
-                colors={["#FFA89C", "#FF8C67"]} 
+                colors={["#e2e8f0", "#e2e8f0"]} 
                 start={{x: 0, y: 0}}
                 end={{x: 1, y: 1}}/>
-            <ImgStack/>
+            {/* <ImgStack/> */}
+            <Image source={require("./video.svg")}/>
             <View style={styles.mainText}>
                 <Text style={{fontSize: 36, color: "black", textAlign: "center"}}>Video <Text style={styles.highlight}>Inpainting</Text></Text>
                 <Text style={{fontSize: 17, color: "black", fontWeight:"200", textAlign: "center"}}>Remove Objects from Videos Using AI</Text>
             </View>
-            <View style={styles.spacer}/>
+            {/* <View style={styles.spacer}/> */}
             <View style={styles.actionContainer}>
                 <Action title="Upload a Video" desc="Edit a premade video" onClick=""/>
                 <Action title="Record a Video" desc="Record a video to edit" onClick="Record"/>
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
         width: 876.42,
         height: 273,
         left: -25,
-        bottom: -85,
+        bottom: -70,
         // backgroundColor: "#FFA89C",
         backgroundColor: "#FFA89C",
         transform: [{ rotate: '6deg' }]
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
         alignContent: "center",
     },
     highlight: {
-        color: "#ff8c67"
+        color: "#3b82f6"
     },
     actionContainer: {
         display: "flex",
@@ -122,6 +124,6 @@ const styles = StyleSheet.create({
         bottom: 18,
     },
     spacer: {
-        height: 100
+        height: 50
     }
 })
