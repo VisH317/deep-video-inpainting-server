@@ -103,10 +103,10 @@ const styles = StyleSheet.create({
         width: 876.42,
         height: 273,
         left: -25,
-        bottom: -70,
+        bottom: -15,
         // backgroundColor: "#FFA89C",
         backgroundColor: "#FFA89C",
-        transform: [{ rotate: '6deg' }]
+        transform: [{ rotate: '-6deg' }]
     },
     mainText: {
         width: "100%",

@@ -35,12 +35,14 @@ export default function VideoFirstFrame(props: VideoFrameProps) {
         .onUpdate(g => {
             setabsxf(Math.round(g.absoluteX))
             setabsyf(Math.round(g.absoluteY))
+            console.log("abs: ", absxf, ", ", absyf)
         })
         .onEnd((g) => {
             setw(Math.abs(Math.round(g.x)-x))
             seth(Math.abs(Math.round(g.y)-y))
             setabsxf(Math.round(g.absoluteX))
             setabsyf(Math.round(g.absoluteY))
+            console.log("abs: ", absxf, ", ", absyf)
             props.setValues(x, y, Math.abs(Math.round(g.x)-x), Math.abs(Math.round(g.y)-y))
         })
 
@@ -48,14 +50,12 @@ export default function VideoFirstFrame(props: VideoFrameProps) {
         borderColor: "blue",
         borderWidth: 2,
         position: "absolute",
-        // top: absy,
-        top:0,
-        left:0,
-        // left: absx,
-        // width: absxf-absx,
-        // height: absyf-absy,
-        width: 100,
-        height: 100,
+        top: absy,
+        // top:0,
+        // left:0,
+        left: absx,
+        width: absxf-absx,
+        height: absyf-absy,
         zIndex: 50
     }
 

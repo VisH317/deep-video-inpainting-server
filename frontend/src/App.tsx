@@ -35,7 +35,7 @@ function App() {
     };
 
     return (
-        <GestureHandlerRootView style={{flex:1}}>
+        <View style={{flex:1}}>
             <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} backgroundColor={backgroundStyle.backgroundColor}/>
             <NavigationContainer ref={navigationRef}>
                 <Tab.Navigator screenOptions={({ route }) => ({
@@ -47,7 +47,7 @@ function App() {
                         console.log("iconName: ", iconName)
                         return <FontAwesomeIcon icon={faHome} color={color}/>
                     },
-                    tabBarActiveTintColor: "#ff8c67",
+                    tabBarActiveTintColor: "#3b82f6",
                     tabBarInactiveTintColor: "#979797",
                     headerShown: false
                 })}>
@@ -55,7 +55,7 @@ function App() {
                     <Tab.Screen name="Camera" options={{ title: "Camera" }} component={RecordStack}/>
                 </Tab.Navigator>
             </NavigationContainer>
-        </GestureHandlerRootView>
+        </View>
     )
 }
 

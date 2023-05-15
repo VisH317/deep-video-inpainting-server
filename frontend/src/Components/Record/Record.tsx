@@ -10,6 +10,7 @@ import { launchImageLibrary } from 'react-native-image-picker'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons/faFileUpload'
 import { faInfo } from '@fortawesome/free-solid-svg-icons/faInfo'
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
 
 async function getVideos() {
     const params = {
@@ -19,7 +20,7 @@ async function getVideos() {
     return videos.assets
 }
 
-export default function Record({ navigation }: any) {
+function Record({ navigation }: any) {
     const devices = useCameraDevices('telephoto-camera')
     const device = devices.back
     // console.log("devices: ", device)
@@ -98,6 +99,9 @@ export default function Record({ navigation }: any) {
         </View>
     )
 }
+
+export default gestureHandlerRootHOC(Record)
+
 
 const styles = StyleSheet.create({
     camera: {
