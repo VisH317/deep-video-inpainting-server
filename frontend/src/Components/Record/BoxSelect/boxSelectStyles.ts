@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native"
 const styles = StyleSheet.create({
     backgroundVideo: {
         zIndex: 0,
-        height: 635,
+        height: "100%",
         flex: 1,
         width: "100%",
     },
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
     videoCont: {
         position: 'absolute',
-        height: 635,
+        height: 731,
         zIndex: 0,
         width: "100%",
         alignItems: 'center',

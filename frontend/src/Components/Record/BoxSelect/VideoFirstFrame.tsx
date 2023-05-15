@@ -20,13 +20,13 @@ export default function VideoFirstFrame(props: VideoFrameProps) {
     const [h, seth] = useState(0)
 
     // states for bounding box
-    const [absx, setabsx] = useState(-10)
-    const [absy, setabsy] = useState(-10)
+    const [absx, setabsx] = useState(0)
+    const [absy, setabsy] = useState(0)
     const [absxf, setabsxf] = useState(0)
     const [absyf, setabsyf] = useState(0)
 
     const pan = Gesture.Pan()
-        .onStart((g) => {
+        .onStart(g => {
             setx(Math.round(g.x)) 
             sety(Math.round(g.y))
             setabsx(Math.round(g.absoluteX))
@@ -65,15 +65,17 @@ export default function VideoFirstFrame(props: VideoFrameProps) {
         <>
             <View style={styles.videoCont}>
                 <View style={boundingBoxStyle}/>
-                <GestureDetector gesture={pan} style={styles.videoCont}>
-                        <Video source={{uri: props.uri}} ref={ref=>player=ref} controls={false} paused={p}
-                            onBuffer={() => console.log("buffering")} onError={() => console.log("ERROR")}
-                            style={styles.backgroundVideo} resizeMode="contain" onLoad={() => {
-                                player.seek(0)
-                                setp(true)
-                        }}/>
-                        
-                </GestureDetector>
+                {/* <GestureHandlerRootView key={`{GHRV}`} style={styles.videoCont}> */}
+                    <GestureDetector gesture={pan} style={styles.videoCont}>
+                            <Video source={{uri: props.uri}} ref={ref=>player=ref} controls={false} paused={p}
+                                onBuffer={() => console.log("buffering")} onError={() => console.log("ERROR")}
+                                style={styles.backgroundVideo} resizeMode="contain" onLoad={() => {
+                                    player.seek(0)
+                                    setp(true)
+                            }}/>
+                            
+                    </GestureDetector>
+                {/* </GestureHandlerRootView> */}
                 {/* <Canvas style={{flex: 1}}>
                     <Path path={path}/> 
                 </Canvas> */}

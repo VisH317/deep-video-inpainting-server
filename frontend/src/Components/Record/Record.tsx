@@ -10,7 +10,7 @@ import { launchImageLibrary } from 'react-native-image-picker'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons/faFileUpload'
 import { faInfo } from '@fortawesome/free-solid-svg-icons/faInfo'
-import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
+
 
 async function getVideos() {
     const params = {
@@ -100,7 +100,7 @@ function Record({ navigation }: any) {
     )
 }
 
-export default gestureHandlerRootHOC(Record)
+export default Record
 
 
 const styles = StyleSheet.create({

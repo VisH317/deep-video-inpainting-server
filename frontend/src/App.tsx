@@ -3,7 +3,6 @@ import { Button, StatusBar, Text, useColorScheme, View } from 'react-native'
 import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { launchImageLibrary } from 'react-native-image-picker'
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 // Components
@@ -17,6 +16,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCamera } from '@fortawesome/free-solid-svg-icons/faCamera'
 import { faFolder } from "@fortawesome/free-solid-svg-icons/faFolder"
 import { faHome } from "@fortawesome/free-solid-svg-icons/faHome"
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 
 const Tab = createBottomTabNavigator()
@@ -35,7 +35,7 @@ function App() {
     };
 
     return (
-        <View style={{flex:1}}>
+        <GestureHandlerRootView style={{flex:1}}>
             <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} backgroundColor={backgroundStyle.backgroundColor}/>
             <NavigationContainer ref={navigationRef}>
                 <Tab.Navigator screenOptions={({ route }) => ({
@@ -55,7 +55,7 @@ function App() {
                     <Tab.Screen name="Camera" options={{ title: "Camera" }} component={RecordStack}/>
                 </Tab.Navigator>
             </NavigationContainer>
-        </View>
+        </GestureHandlerRootView>
     )
 }
 
