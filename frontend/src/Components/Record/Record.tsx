@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { StyleSheet, Text,View, Pressable } from 'react-native'
+import { StyleSheet, Text,View, Pressable, TouchableNativeFeedback } from 'react-native'
 import Nav from '../Nav'
 import videoURI from '../../data/video'
 import { useAtom } from 'jotai'
@@ -77,7 +77,7 @@ export default function Record({ navigation }: any) {
         }
     }
 
-    if(device==null) return <Text>LOADING</Text>
+    if(device==null) return <Text style={{color: "white"}}>LOADING</Text>
     return (
         <View>
             <Camera style={styles.camera} device={device} video={true} ref={camera} isActive>
@@ -85,11 +85,14 @@ export default function Record({ navigation }: any) {
             </Camera>
             <View style={{flex: 1, flexDirection: "column-reverse", height: 635, width: "100%", position: "absolute", top: 0, left: 0}}>
             <View style={styles.btnContainer}>
-                <Pressable style={styles.upload} onPressOut={updateVideos}>
-                    <Text><FontAwesomeIcon icon={faFileUpload} color="black" size={25}/></Text>
-                </Pressable>
-                <Pressable style={styles.start} onPressOut={startRecording}><Text></Text></Pressable>
-                <Pressable><FontAwesomeIcon icon={faInfo} color="black" size={25}/></Pressable>
+                <TouchableNativeFeedback style={styles.upload} onPressOut={updateVideos} background={TouchableNativeFeedback.Ripple(
+                "#cbd5e1",
+                true
+                )}>
+                    <Text><FontAwesomeIcon icon={faFileUpload} color="white" size={25}/></Text>
+                </TouchableNativeFeedback>
+                <Pressable style={isRecording ? styles.startActive : styles.start} onPressOut={startRecording}><Text></Text></Pressable>
+                <Pressable><FontAwesomeIcon icon={faInfo} color="white" size={25}/></Pressable>
             </View>
             </View>
         </View>
@@ -124,15 +127,23 @@ const styles = StyleSheet.create({
         height: 60,
         backgroundColor: "transparent",
         borderRadius: 30,
-        borderColor: "black",
-        padding: 10,
+        borderColor: "white",
+        borderWidth: 5,
+    },
+    startActive: {
+        width: 60,
+        height: 60,
+        backgroundColor: "#3b82f6",
+        padding: 2,
+        borderRadius: 30,
+        borderColor: "#3b82f6",
         borderWidth: 5,
     },
     upload: {
-        width: 20,
-        height: 20,
+        width: 50,
+        height: 50,
         backgroundColor: "transparent",
-        color: "black",
+        color: "white",
         // left: "calc(25%-10px)",
         // top: "85%"
     }

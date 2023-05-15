@@ -31,7 +31,7 @@ export default function Action(props: ActionProps) {
     return (
         <Pressable style={styles.container} onPressIn={pressIn} onPressOut={pressOut}>
             <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(
-                "#ddd",
+                "#cbd5e1",
                 true
             )}>
                 <View style={styles.innerContainer}>

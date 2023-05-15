@@ -93,27 +93,27 @@ function BoxSelect({ navigation, route }: any) {
                         true
                     )} onPress={() => console.log("hola")}>
                         <View style={{width: 65, height: 65, overflow: "hidden", borderRadius: 32.5, display: "flex", justifyContent: "center", alignItems: "center"}}>
-                            <FontAwesomeIcon icon={faArrowLeft} color="#333" size={35}/>
+                            <FontAwesomeIcon icon={faArrowLeft} color="white" size={35}/>
                         </View>
                     </TouchableNativeFeedback>
                     </View>
 
                     <View style={{borderRadius: 32.5}}>
-                    <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(
+                    {/* <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple(
                         "#00000000",
                         true
                     )} onPress={() => console.log("hola")}>
                         <View style={{width: 65, height: 65, overflow: "hidden", borderRadius: 32.5, display: "flex", justifyContent: "center", alignItems: "center"}}>
-                            <FontAwesomeIcon icon={faInfo} color="#333" size={35}/>
+                            <FontAwesomeIcon icon={faInfo} color="white" size={35}/>
                         </View>
-                    </TouchableNativeFeedback>
+                    </TouchableNativeFeedback> */}
                     </View>
 
-                    <LinearGradient colors={['#FF8C67', '#FFA89C']}
+                    <LinearGradient colors={['#3b82f6', '#3b82f6']}
                         style={styles.button} 
                         start={{ y: 0.0, x: 0.0 }} end={{ y: 1.0, x: 1.0 }}>
                         <Pressable onPress={onSubmit}>
-                            <FontAwesomeIcon icon={faCheck} color="#333" size={35}/>
+                            <FontAwesomeIcon icon={faCheck} color="white" size={35}/>
                         </Pressable>
                     </LinearGradient>
                 </View>

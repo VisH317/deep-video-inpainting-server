@@ -43,8 +43,9 @@ function App() {
                         let iconName;
                         if(route.name==="Home") iconName = faHome
                         if(route.name==="Camera") iconName = faCamera
-                        if(route.name==="Files") iconName = faFolder
-                        return <FontAwesomeIcon icon={iconName} color={color}/>
+                        // if(route.name==="Files") iconName = faFolder
+                        console.log("iconName: ", iconName)
+                        return <FontAwesomeIcon icon={faHome} color={color}/>
                     },
                     tabBarActiveTintColor: "#ff8c67",
                     tabBarInactiveTintColor: "#979797",

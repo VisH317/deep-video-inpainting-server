@@ -48,11 +48,15 @@ export default function VideoFirstFrame(props: VideoFrameProps) {
         borderColor: "blue",
         borderWidth: 2,
         position: "absolute",
-        top: absy,
-        left: absx,
-        width: absxf-absx,
-        height: absyf-absy,
-        zIndex: 100
+        // top: absy,
+        top:0,
+        left:0,
+        // left: absx,
+        // width: absxf-absx,
+        // height: absyf-absy,
+        width: 100,
+        height: 100,
+        zIndex: 50
     }
 
     let player: any

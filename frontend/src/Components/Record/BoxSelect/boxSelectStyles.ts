@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         flex: 1,
         display: "flex",
-
+        borderWidth: 2
     },
     btnContainer: {
         flex: 1, 
