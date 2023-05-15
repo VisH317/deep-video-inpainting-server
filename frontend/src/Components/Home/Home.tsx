@@ -51,7 +51,9 @@ export default function Home({ navigation }: any) {
                 start={{x: 0, y: 0}}
                 end={{x: 1, y: 1}}/>
             {/* <ImgStack/> */}
-            <Image source={require("./video.svg")}/>
+            <View style={styles.imgContainer}>
+                <Image source={require("./video.png")} style={{ width: 300, height: 300 }}/>
+            </View>
             <View style={styles.mainText}>
                 <Text style={{fontSize: 36, color: "black", textAlign: "center"}}>Video <Text style={styles.highlight}>Inpainting</Text></Text>
                 <Text style={{fontSize: 17, color: "black", fontWeight:"200", textAlign: "center"}}>Remove Objects from Videos Using AI</Text>
@@ -89,6 +91,12 @@ const styles = StyleSheet.create({
         // backgroundColor: "#FFA89C",
         backgroundColor: "#FFA89C",
         transform: [{ rotate: '6deg' }]
+    },
+    imgContainer: {
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
     },
     bottomRect: {
         position: "absolute",
